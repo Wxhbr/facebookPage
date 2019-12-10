@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Projeto Facebook SignUp</title>
+    <link type="text/css" href="./libs/bootstrap.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div class="bluebarHeader">
+        <header>
+            <div class="bluebarContent">
+                <div class="fbLogo">
+                    <img class="fbLogoImagem" src="./images/facebook-logo-1.jpg" alt="logo_faceboo">
+                </div>
+                <div>
+                    <form class="loginForm">
+                        <div class="loginItem">
+                            <small><label for="" class="texto">Email ou telefone</label></small> <br>
+                            <input type="text" required="required" id="emailTelefone">
+                        </div>
+                        <div class="loginItem">
+                            <small><label for="" class="texto">Senha</label></small> <br>
+                            <input type="password" maxid="email"><br>
+                            <small><a class="forgotAccount" href="url">Esqueceu a conta?</a></small>
+                        </div>
+                        <div class="submitButton">
+                            <button class="submitLogin">Entrar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </header>
+    </div>
+    <article>
+        <div class="articleContainer">
+            <div class="articleContent">
+                <div class="leftContainer">
+                    <div class="leftText">
+                        <h2>O Facebook ajuda você a se conectar e compartilhar com as pessoas que fazem parte da sua
+                            vida.
+                        </h2>
+                    </div>
+                    <div class="leftImage">
+                        <img class="imagemMundo" src="images/fbmundo.png">
+                    </div>
+                </div>
+                <div class="rightContainer">
+                    <div class="rightText">
+                        <h1>Abra uma conta</h1>
+                        <p>É rápido e fácil.<p>
+                    </div>
+                    <div>
+                        <form class="registerForm">
+                            <div class="row">
+                                <div class="form-group col">
+                                    <input class="form-control col" placeholder="Nome" type="text" required="required"
+                                        name="nome">
+                                </div>
+                                <div class="form-group col">
+                                    <input class="form-control col" placeholder="Sobrenome" type="text"
+                                        required="required" name="sobrenome">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control emailTelefone" type="text" required="required" maxlength="50"
+                                    name="emailTelefone" placeholder="Celular ou email">
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control novaSenha" type="password" required="required" maxlength="50"
+                                    name="novaSenha" placeholder="Nova senha">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Data de nascimento </label>
+
+                                <input id="datepicker" width="276" /> DatePicker Aqui
+                            </div>
+                            <div class="form-group">
+                                <label>Gênero</label><br>
+                                <div class="form-check form-check-inline">
+                                    <label class="form-check-label" for='genero'><input class="form-check-input"
+                                            name="genero" id="genero" value="f" type="radio">
+                                        Feminino</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <label class="form-check-label" for='genero'><input class="form-check-input"
+                                            name="genero" id="genero" value="m" type="radio">Masculino</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <label class="form-check-label" for='genero'><input class="form-check-input"
+                                            name="genero" id="genero" value="p" type="radio">Personalizado</label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        </div>
+        </div>
+        <div class="rodape">
+            <footer>Projeto Facebook Signup Criado Por: Felipe A. Lima / Lucas Werner / Julio Cezar</footer>
+        </div>
+
+        <!-- <script type="text/javascript" src="./libs/jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="./libs/bootstrap.js"></script> -->
+        <script type="text/javascript" src="./script.js"></script>
+</body>
+
+</html>
