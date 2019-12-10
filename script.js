@@ -5,26 +5,27 @@ function validateEmail(email) {
     return resultado.test(email);
   }
 
-function validadeTelefone(telefone){
+function validateTelefone(telefone){
     var resultado = /\d{4,5}-\d{4}/g;
     return resultado.test(telefone);
 }
 
 
-
-let botaoEnviar = document.getElementsByClassName('botaoEnviar')[0]
-let campoEmailTelefone = document.getElementsByTagName('input')[0].value
+let botaoEnviar = document.getElementsByClassName('submitLogin')[0]
 
 
-botaoEnviar.addEventListener('click', function () {
-    event.preventDefault()
+botaoEnviar.addEventListener('click', function() {
+    event.preventDefault();
+    campoEmailTelefone = document.getElementsByTagName('input')[0].value
     if (validateEmail(campoEmailTelefone) == true || validateTelefone(campoEmailTelefone) == true){
-        alert("Você não inseriu um e-mail ou número de telefone válido");
-    } else {
         alert("Login realizado com sucesso");
+    } else {
+        alert("Você não inseriu um e-mail ou número de telefone válido");
     }
 })
 
-$('#datepicker').datepicker({
-    uiLibrary: 'bootstrap4'
-})
+// $('#datepicker').datepicker({
+//     uiLibrary: 'bootstrap4'
+// })
+
+
