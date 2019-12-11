@@ -312,4 +312,25 @@ a {
   margin-bottom: 8px;
  
 }
-    
+
+.extras{
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  width: 980px;
+  height: 57px;
+  align-items: center;
+}
+
+.extraItem {
+  margin-right: 20px;
+  font-size: 12px;
+
+}
+
+.copyright {
+  font-size: 11px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}  
