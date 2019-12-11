@@ -56,8 +56,24 @@ function validateNomeSobrenome(nomeSobrenome) {
         let bordaSobrenome = document.querySelectorAll('.form-group')[1].querySelectorAll('.form-control')[0]
         bordaSobrenome.style.borderColor = 'greenyellow'
     } else if (resultado.test(nomeValue) !== true && nomeValue == "") {
+        let bordaSobrenome = document.querySelectorAll('.form-group')[1].querySelectorAll('.form-control')[0]
         bordaSobrenome.style.borderColor = 'red'
     }
+}
+
+function validateEmailTelefoneForm(emailTelefome) {
+    debugger
+    let emailValue = event.target.value
+    var resultadoEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    var resultadoTelefone = /\d{4,5}-\d{4}/g;
+    if (resultadoEmail.test(emailValue) !== true && resultadoTelefone.test(emailValue) !== true) {
+        let bordaEmailTelefone = document.querySelectorAll('.form-group')[2].querySelectorAll('.form-control')[0]
+        bordaEmailTelefone.style.borderColor = 'red'
+    } else if (resultadoEmail.test(emailValue) == true || resultadoTelefone.test(emailValue) == true) {
+        let bordaEmailTelefone = document.querySelectorAll('.form-group')[2].querySelectorAll('.form-control')[0]
+        bordaEmailTelefone.style.borderColor = 'greenyellow'
+    }
+
 }
 
 
@@ -68,10 +84,8 @@ let bordaNome = document.querySelectorAll('.form-group')[0].querySelector('.form
 // Eventos no Nome do Formulário
 
 bordaNome.addEventListener('click', validateNome)
-bordaNome.addEventListener('keypress', validateNome)
-bordaNome.addEventListener('keydown', validateNome)
-bordaNome.addEventListener('keyup', validateNome)
-bordaNome.addEventListener('changes', validateNome)
+bordaNome.addEventListener('change', validateNome)
+bordaNome.addEventListener('blur', validateNome)
 
 // Verifica Sobrenome
 
@@ -80,10 +94,8 @@ let bordaSobrenome = document.querySelectorAll('.form-group')[1].querySelectorAl
 // Eventos no Sobrenome do Formulário
 
 bordaSobrenome.addEventListener('click', validateNomeSobrenome)
-bordaSobrenome.addEventListener('keypress', validateNomeSobrenome)
-bordaSobrenome.addEventListener('keydown', validateNomeSobrenome)
-bordaSobrenome.addEventListener('keyup', validateNomeSobrenome)
-bordaSobrenome.addEventListener('changes', validateNomeSobrenome)
+bordaSobrenome.addEventListener('change', validateNomeSobrenome)
+bordaSobrenome.addEventListener('blur', validateNome)
 
 // Verifica Email
 
@@ -91,4 +103,6 @@ bordaEmail = document.querySelectorAll('.form-group')[2].querySelectorAll('.form
 
 // Eventos no E-mail e Celular
 
-
+bordaEmail.addEventListener('click', validateEmailTelefoneForm)
+bordaEmail.addEventListener('change', validateEmailTelefoneForm)
+bordaEmail.addEventListener('blur', validateNome)
