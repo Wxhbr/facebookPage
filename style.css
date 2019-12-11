@@ -184,4 +184,80 @@ label {
   color: #90949c;
   font-size: 16px;
   font-weight: bold;
+  margin: 10px 0 5px 0;
+}
+
+.label-text-2 {
+  color: #90949c;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0px 0 5px 0;
+}
+
+#datePicker {
+  margin: 0;
+  font-size: 13px;
+  width: 150px;
+  padding: 5px;
+  border: 1px solid #ccd0d5;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+.form-check-label {
+  color: #1d2129;
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 18px;
+  padding-top: 5px;
+}
+
+.terms-text > p {
+  margin: 11px 0;
+  padding: 0;
+  color: #777;
+  font-size: 11px;
+  width: 316px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a {
+  color: #385898;
+}
+
+.buttonContent {
+  font-size: 19px;
+  font-family: 'Freight Sans Bold', Helvetica, Arial, sans-serif !important;
+  font-weight: bold !important;
+  letter-spacing: normal;
+  text-rendering: optimizelegibility;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  min-width: 194px;
+  padding: 7px 20px;
+  text-align: center;
+  box-shadow: inset 0 1px 1px #a4e388;
+  border-color: #3b6e22 #3b6e22 #2c5115;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  background: linear-gradient(#67ae55, #578843);
+}
+
+.buttonContent:hover {
+  background: linear-gradient(#79bc64, #578843);
+  text-decoration: none;
+}
+
+.createPage {
+  color: #666;
+  font-size: 13px;
+  font-weight: bold;
+  margin-top: 10px;
+  padding-top: 15px;
 }

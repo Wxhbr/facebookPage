@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Projeto Facebook SignUp</title>
+    <link rel="stylesheet" href="libs/DatePickerX.min.css" type="text/css">
     <link type="text/css" href="./libs/bootstrap.css" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="style.css">
 
@@ -77,42 +78,50 @@
                             </div>
                             <div class="form-group">
                                 <label for="" class="label-text">Data de nascimento </label><br>
-                                <input id="datepicker">
+                                <input type="text" id="datePicker">
                             </div>
+                            <label class="label-text-2">Gênero</label><br>
                             <div class="form-group">
-                                <label class="label-text">Gênero</label><br>
                                 <div class="form-check form-check-inline">
-                                    <label class="form-check-label" for='genero'><input class="form-check-input"
-                                            name="genero" id="genero" value="f" type="radio">
-                                        Feminino</label>
+                                    <label class="form-check-label" for='feminino'><input class="form-check-input"
+                                            name="genero" id="feminino" value="f" type="radio">Feminino</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <label class="form-check-label" for='genero'><input class="form-check-input"
-                                            name="genero" id="genero" value="m" type="radio">Masculino</label>
+                                    <label class="form-check-label" for='masculino'><input class="form-check-input"
+                                            name="genero" id="masculino" value="m" type="radio">Masculino</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <label class="form-check-label" for='genero'><input class="form-check-input"
-                                            name="genero" id="genero" value="p" type="radio">Personalizado</label>
+                                    <label class="form-check-label" for='personalizado'><input class="form-check-input"
+                                            name="genero" id="personalizado" value="p" type="radio">Personalizado</label>
                                 </div>
                             </div>
                         </form>
+                        <div class="terms-text">
+                        <p>Ao clicar em Cadastre-se, você concorda com nossos 
+                            <a href="https://pt-br.facebook.com/legal/terms/update" id="terms-link" target="_blank" rel="nofollow">Termos</a>,
+                            <a href="https://pt-br.facebook.com/about/privacy/update" id="privacy-link" target="_blank" rel="nofollow">Política de Dados</a> e
+                            <a href="https://pt-br.facebook.com/policies/cookies/" id="cookie-use-link" target="_blank" rel="nofollow">Política de Cookies</a>
+                            Você pode receber notificações por SMS e pode cancelar isso quando quiser.</p>
+                        </div>
+                        <div class="buttonContainer">
+                            <button type="submit" class="buttonContent">Cadastre-se</button>
+                        </div>
+                        <div class="createPage">
+                         <a href="https://pt-br.facebook.com/pages/creation/?ref_type=registration_form" class="_8esh">Criar uma Página</a>
+                         para uma celebridade, banda ou empresa.
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
-
-
-        </div>
-        </div>
-        <div class="rodape">
-            <footer>Projeto Facebook Signup Criado Por: Felipe A. Lima / Lucas Werner / Julio Cezar</footer>
-        </div>
-
+    </article>
+    <div class="rodape">
+        <footer>Projeto Facebook Signup Criado Por: Felipe A. Lima / Lucas Werner / Julio Cezar</footer>
+    </div>
         <!-- <script type="text/javascript" src="./libs/jquery-3.4.1.js"></script>
     <script type="text/javascript" src="./libs/bootstrap.js"></script> -->
-        <script type="text/javascript" src="./script.js"></script>
+    <script src="libs/DatePickerX.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="./script.js"></script>
 </body>
 
 </html>

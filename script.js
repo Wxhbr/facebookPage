@@ -24,6 +24,8 @@ botaoEnviar.addEventListener('click', function() {
     }
 })
 
+document.querySelector('#datePicker').DatePickerX.init({format:'dd/mm/yyyy'});
+
 // $('#datepicker').datepicker({
 //     uiLibrary: 'bootstrap4'
 // })
