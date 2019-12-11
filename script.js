@@ -17,7 +17,7 @@ let botaoEnviar = document.getElementsByClassName('submitLogin')[0]
 
 // Verificação de Login
 
-botaoEnviar.addEventListener('click', function () {
+botaoEnviar.addEventListener('click', function campoLogin() {
     event.preventDefault();
     campoEmailTelefone = document.getElementsByTagName('input')[0].value
     campoSenha = document.querySelectorAll('.loginItem')[1].querySelectorAll('input')[0].value
@@ -35,21 +35,13 @@ document.querySelector('#datePicker').DatePickerX.init({
 // Regex Nome
 
 function validateNome(event) {
-    let nomeValue = event.target.value.trim()    
-    //var resultado = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð,.'-]+(\s{0,1})*$/;
+    let nomeValue = event.target.value.trim()
     const resultado = /^[a-zA-ZéúíóáÉÚÍÓÁèùìòàçÇÈÙÌÒÀõãñÕÃÑêûîôâÊÛÎÔÂëÿüïöäËYÜÏÖÄ\-\ \s]+$/;
     if (resultado.test(nomeValue) == true) {
-        //let bordaNome = document.querySelectorAll('.form-group')[0].querySelectorAll('.form-control')[0]
         event.target.style.borderColor = 'greenyellow'
         event.target.value = nomeValue;
-        alert (event.target.style.borderColor);
-        //alert(nomeValue);
-        //bordaNome.style.borderColor = 'greenyellow'
     } else if (resultado.test(nomeValue) !== true || nomeValue === "") {
-       // let bordaNome = document.querySelectorAll('.form-group')[0].querySelectorAll('.form-control')[0]
-       // bordaNome.style.borderColor = 'red'
-       event.target.style.borderColor = 'red';
-       //alert(nomeValue);
+        event.target.style.borderColor = 'red';
     }
 }
 
@@ -57,51 +49,50 @@ function validateNome(event) {
 
 function validateNomeSobrenome(event) {
     let nomeValue = event.target.value.trim()
-    //var resultado = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u
     const resultado = /^[a-zA-ZéúíóáÉÚÍÓÁèùìòàçÇÈÙÌÒÀõãñÕÃÑêûîôâÊÛÎÔÂëÿüïöäËYÜÏÖÄ\-\ \s]+$/;
     if (resultado.test(nomeValue) == true) {
-        //let bordaSobrenome = document.querySelectorAll('.form-group')[1].querySelectorAll('.form-control')[0]
-        //bordaSobrenome.style.borderColor = 'greenyellow'
         event.target.value = nomeValue;
         event.target.style.borderColor = 'greenyellow';
     } else if (resultado.test(nomeValue) !== true || nomeValue == "") {
-        //let bordaSobrenome = document.querySelectorAll('.form-group')[1].querySelectorAll('.form-control')[0]
-        //bordaSobrenome.style.borderColor = 'red'
         event.target.value = nomeValue;
         event.target.style.borderColor = 'red';
     }
 }
 
 function validateEmailTelefoneForm(event) {
-  //debugger
-  const emailValue = event.target.value.trim()    
-  const resultadoEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  const resultadoTelefone = /\d{4,5}-\d{4}/g;
-  const emailValidation = resultadoEmail.test(emailValue);
-  const telefoneValidation = resultadoTelefone.test(emailValue);       
-  if ((emailValidation || telefoneValidation) === true) {
-      //const bordaEmailTelefone = document.querySelectorAll('.form-group')[2].querySelectorAll('.form-control')[0]
-      //bordaEmailTelefone.style.borderColor = 'greenyellow'
-      event.target.value = emailValue
-      event.target.style.borderColor = 'greenyellow'
-  } else {        
-      //const bordaEmailTelefone = document.querySelectorAll('.form-group')[2].querySelectorAll('.form-control')[0]
-      //bordaEmailTelefone.style.borderColor = 'red'
-      alert('entrou 1')
-      event.target.value = emailValue
-      event.target.style.borderColor = 'red'
-  }
+    //debugger
+    const emailValue = event.target.value.trim()
+    const resultadoEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const resultadoTelefone = /\d{4,5}-\d{4}/g;
+    const emailValidation = resultadoEmail.test(emailValue);
+    const telefoneValidation = resultadoTelefone.test(emailValue);
+    if ((emailValidation || telefoneValidation) === true) {
+        event.target.value = emailValue
+        event.target.style.borderColor = 'greenyellow'
+    } else {
+        event.target.value = emailValue
+        event.target.style.borderColor = 'red'
+    }
 }
 
 function validateData(event) {
-  dataValue = event.target.value.trim();  
-  if (dataValue === '') {
-    event.target.style.borderColor = 'red';
-  } else {
-      event.target.style.borderColor = 'yellowgreen'
-  }
+    dataValue = event.target.value.trim();
+    if (dataValue === '') {
+        event.target.style.borderColor = 'red';
+    } else {
+        event.target.style.borderColor = 'yellowgreen'
+    }
 }
 
+function verificaSenhaForm (){
+    const evento = event.target;
+    const eventoValue = event.target.value;
+    if (eventoValue !== "") {
+        evento.style.borderColor = 'greenyellow';
+    } else {
+        evento.style.borderColor = 'red';
+    }
+}
 
 // Verifica Nome
 
@@ -109,9 +100,7 @@ let bordaNome = document.querySelectorAll('.form-group')[0].querySelector('.form
 
 // Eventos no Nome do Formulário
 
-//bordaNome.addEventListener('click', validateNome)
-//bordaNome.addEventListener('change', validateNome)
-bordaNome.addEventListener('blur', validateNome, true)
+bordaNome.addEventListener('blur', validateNome)
 
 // Verifica Sobrenome
 
@@ -119,8 +108,6 @@ let bordaSobrenome = document.querySelectorAll('.form-group')[1].querySelectorAl
 
 // Eventos no Sobrenome do Formulário
 
-//bordaSobrenome.addEventListener('click', validateNomeSobrenome)
-//bordaSobrenome.addEventListener('change', validateNomeSobrenome)
 bordaSobrenome.addEventListener('blur', validateNomeSobrenome)
 
 // Verifica Email
@@ -129,8 +116,6 @@ const bordaEmail = document.querySelectorAll('.form-group')[2].querySelectorAll(
 
 // Eventos no E-mail e Celular
 
-//bordaEmail.addEventListener('click', validateEmailTelefoneForm)
-//bordaEmail.addEventListener('change', validateEmailTelefoneForm)
 bordaEmail.addEventListener('blur', validateEmailTelefoneForm)
 
 // Verifica Data
@@ -139,6 +124,14 @@ const bordaData = document.querySelector('#datePicker');
 
 // Eventos na Data
 
-//bordaEmail.addEventListener('click', validateEmailTelefoneForm)
-//bordaEmail.addEventListener('change', validateEmailTelefoneForm)
-bordaData.addEventListener('change', validateData)
+bordaData.addEventListener('blur', validateData)
+
+// Verifica Senha Formulário
+
+const campoSenhaValue = document.querySelector('.novaSenha')
+
+
+// Eventos na senha
+
+campoSenhaValue.addEventListener('blur', verificaSenhaForm)
+
