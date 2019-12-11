@@ -36,33 +36,45 @@ document.querySelector('#datePicker').DatePickerX.init({
 // Regex Nome
 
 function validateNome(event) {
-    let nomeValue = event.target.value
-    var resultado = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð,.'-]+(\s{0,1})*$/;
+    let nomeValue = event.target.value.trim()    
+    //var resultado = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð,.'-]+(\s{0,1})*$/;
+    const resultado = /^[a-zA-ZéúíóáÉÚÍÓÁèùìòàçÇÈÙÌÒÀõãñÕÃÑêûîôâÊÛÎÔÂëÿüïöäËYÜÏÖÄ\-\ \s]+$/;
     if (resultado.test(nomeValue) == true) {
-        let bordaNome = document.querySelectorAll('.form-group')[0].querySelectorAll('.form-control')[0]
-        bordaNome.style.borderColor = 'greenyellow'
-    } else if (resultado.test(nomeValue) !== true && nomeValue == "") {
-        let bordaNome = document.querySelectorAll('.form-group')[0].querySelectorAll('.form-control')[0]
-        bordaNome.style.borderColor = 'red'
+        //let bordaNome = document.querySelectorAll('.form-group')[0].querySelectorAll('.form-control')[0]
+        event.target.style.borderColor = 'greenyellow'
+        event.target.value = nomeValue;
+        alert (event.target.style.borderColor);
+        //alert(nomeValue);
+        //bordaNome.style.borderColor = 'greenyellow'
+    } else if (resultado.test(nomeValue) !== true || nomeValue === "") {
+       // let bordaNome = document.querySelectorAll('.form-group')[0].querySelectorAll('.form-control')[0]
+       // bordaNome.style.borderColor = 'red'
+       event.target.style.borderColor = 'red';
+       //alert(nomeValue);
     }
 }
 
 // Regex Sobrenome
 
-function validateNomeSobrenome(nomeSobrenome) {
-    let nomeValue = event.target.value
-    var resultado = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u
+function validateNomeSobrenome(event) {
+    let nomeValue = event.target.value.trim()
+    //var resultado = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u
+    const resultado = /^[a-zA-ZéúíóáÉÚÍÓÁèùìòàçÇÈÙÌÒÀõãñÕÃÑêûîôâÊÛÎÔÂëÿüïöäËYÜÏÖÄ\-\ \s]+$/;
     if (resultado.test(nomeValue) == true) {
-        let bordaSobrenome = document.querySelectorAll('.form-group')[1].querySelectorAll('.form-control')[0]
-        bordaSobrenome.style.borderColor = 'greenyellow'
-    } else if (resultado.test(nomeValue) !== true && nomeValue == "") {
-        let bordaSobrenome = document.querySelectorAll('.form-group')[1].querySelectorAll('.form-control')[0]
-        bordaSobrenome.style.borderColor = 'red'
+        //let bordaSobrenome = document.querySelectorAll('.form-group')[1].querySelectorAll('.form-control')[0]
+        //bordaSobrenome.style.borderColor = 'greenyellow'
+        event.target.value = nomeValue;
+        event.target.style.borderColor = 'greenyellow';
+    } else if (resultado.test(nomeValue) !== true || nomeValue == "") {
+        //let bordaSobrenome = document.querySelectorAll('.form-group')[1].querySelectorAll('.form-control')[0]
+        //bordaSobrenome.style.borderColor = 'red'
+        event.target.value = nomeValue;
+        event.target.style.borderColor = 'red';
     }
 }
 
 function validateEmailTelefoneForm(emailTelefome) {
-    debugger
+    //debugger
     let emailValue = event.target.value
     var resultadoEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     var resultadoTelefone = /\d{4,5}-\d{4}/g;
@@ -83,9 +95,9 @@ let bordaNome = document.querySelectorAll('.form-group')[0].querySelector('.form
 
 // Eventos no Nome do Formulário
 
-bordaNome.addEventListener('click', validateNome)
-bordaNome.addEventListener('change', validateNome)
-bordaNome.addEventListener('blur', validateNome)
+//bordaNome.addEventListener('click', validateNome)
+//bordaNome.addEventListener('change', validateNome)
+bordaNome.addEventListener('blur', validateNome, true)
 
 // Verifica Sobrenome
 
@@ -95,7 +107,7 @@ let bordaSobrenome = document.querySelectorAll('.form-group')[1].querySelectorAl
 
 bordaSobrenome.addEventListener('click', validateNomeSobrenome)
 bordaSobrenome.addEventListener('change', validateNomeSobrenome)
-bordaSobrenome.addEventListener('blur', validateNome)
+bordaSobrenome.addEventListener('blur', validateNomeSobrenome)
 
 // Verifica Email
 
