@@ -32,7 +32,6 @@ document.querySelector('#datePicker').DatePickerX.init({
     format: 'dd/mm/yyyy'
 });
 
-
 // Regex Nome
 
 function validateNome(event) {
