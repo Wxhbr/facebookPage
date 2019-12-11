@@ -52,3 +52,16 @@ function validateNomeSobrenome(nomeSobrenome) {
     var resultado = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u
     return resultado.test(nomeSobrenome)
 }
+
+function verificaNomeForm (nome){
+    campoNome = document.querySelectorAll('.form-group')[0].querySelector('.form-control').value
+    if (campoNome !== "" && validateNome(campoNome) == true){
+        return true
+    } else {
+        return false
+    }
+}
+
+// Verifica Nome
+
+let campoNome = document.querySelectorAll('.form-group')[0].querySelector('.form-control')
