@@ -24,7 +24,7 @@ botaoEnviar.addEventListener('click', function () {
     if (campoSenha !== "" && validateEmail(campoEmailTelefone) == true || validateTelefone(campoEmailTelefone) == true) {
         alert("Login realizado com sucesso");
     } else {
-        alert("Você não inseriu um e-mail ou número de telefone válido e/ou o campo senha está vazio");
+        alert("Você não inseriu um e-mail ou número de telefone válido(xxxxx-xxxx) e/ou o campo senha está vazio");
     }
 })
 
@@ -35,44 +35,71 @@ document.querySelector('#datePicker').DatePickerX.init({
 // Regex Nome
 
 function validateNome(event) {
-    let nomeValue = event.target.value
-    var resultado = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð,.'-]+(\s{0,1})*$/;
+    let nomeValue = event.target.value.trim()    
+    //var resultado = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð,.'-]+(\s{0,1})*$/;
+    const resultado = /^[a-zA-ZéúíóáÉÚÍÓÁèùìòàçÇÈÙÌÒÀõãñÕÃÑêûîôâÊÛÎÔÂëÿüïöäËYÜÏÖÄ\-\ \s]+$/;
     if (resultado.test(nomeValue) == true) {
-        let bordaNome = document.querySelectorAll('.form-group')[0].querySelectorAll('.form-control')[0]
-        bordaNome.style.borderColor = 'greenyellow'
-    } else if (resultado.test(nomeValue) !== true && nomeValue == "") {
-        let bordaNome = document.querySelectorAll('.form-group')[0].querySelectorAll('.form-control')[0]
-        bordaNome.style.borderColor = 'red'
+        //let bordaNome = document.querySelectorAll('.form-group')[0].querySelectorAll('.form-control')[0]
+        event.target.style.borderColor = 'greenyellow'
+        event.target.value = nomeValue;
+        alert (event.target.style.borderColor);
+        //alert(nomeValue);
+        //bordaNome.style.borderColor = 'greenyellow'
+    } else if (resultado.test(nomeValue) !== true || nomeValue === "") {
+       // let bordaNome = document.querySelectorAll('.form-group')[0].querySelectorAll('.form-control')[0]
+       // bordaNome.style.borderColor = 'red'
+       event.target.style.borderColor = 'red';
+       //alert(nomeValue);
     }
 }
 
 // Regex Sobrenome
 
-function validateNomeSobrenome(nomeSobrenome) {
-    let nomeValue = event.target.value
-    var resultado = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u
+function validateNomeSobrenome(event) {
+    let nomeValue = event.target.value.trim()
+    //var resultado = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u
+    const resultado = /^[a-zA-ZéúíóáÉÚÍÓÁèùìòàçÇÈÙÌÒÀõãñÕÃÑêûîôâÊÛÎÔÂëÿüïöäËYÜÏÖÄ\-\ \s]+$/;
     if (resultado.test(nomeValue) == true) {
-        let bordaSobrenome = document.querySelectorAll('.form-group')[1].querySelectorAll('.form-control')[0]
-        bordaSobrenome.style.borderColor = 'greenyellow'
-    } else if (resultado.test(nomeValue) !== true && nomeValue == "") {
-        let bordaSobrenome = document.querySelectorAll('.form-group')[1].querySelectorAll('.form-control')[0]
-        bordaSobrenome.style.borderColor = 'red'
+        //let bordaSobrenome = document.querySelectorAll('.form-group')[1].querySelectorAll('.form-control')[0]
+        //bordaSobrenome.style.borderColor = 'greenyellow'
+        event.target.value = nomeValue;
+        event.target.style.borderColor = 'greenyellow';
+    } else if (resultado.test(nomeValue) !== true || nomeValue == "") {
+        //let bordaSobrenome = document.querySelectorAll('.form-group')[1].querySelectorAll('.form-control')[0]
+        //bordaSobrenome.style.borderColor = 'red'
+        event.target.value = nomeValue;
+        event.target.style.borderColor = 'red';
     }
 }
 
-function validateEmailTelefoneForm(emailTelefome) {
-    debugger
-    let emailValue = event.target.value
-    var resultadoEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    var resultadoTelefone = /\d{4,5}-\d{4}/g;
-    if (resultadoEmail.test(emailValue) !== true && resultadoTelefone.test(emailValue) !== true) {
-        let bordaEmailTelefone = document.querySelectorAll('.form-group')[2].querySelectorAll('.form-control')[0]
-        bordaEmailTelefone.style.borderColor = 'red'
-    } else if (resultadoEmail.test(emailValue) == true || resultadoTelefone.test(emailValue) == true) {
-        let bordaEmailTelefone = document.querySelectorAll('.form-group')[2].querySelectorAll('.form-control')[0]
-        bordaEmailTelefone.style.borderColor = 'greenyellow'
-    }
+function validateEmailTelefoneForm(event) {
+  //debugger
+  const emailValue = event.target.value.trim()    
+  const resultadoEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const resultadoTelefone = /\d{4,5}-\d{4}/g;
+  const emailValidation = resultadoEmail.test(emailValue);
+  const telefoneValidation = resultadoTelefone.test(emailValue);       
+  if ((emailValidation || telefoneValidation) === true) {
+      //const bordaEmailTelefone = document.querySelectorAll('.form-group')[2].querySelectorAll('.form-control')[0]
+      //bordaEmailTelefone.style.borderColor = 'greenyellow'
+      event.target.value = emailValue
+      event.target.style.borderColor = 'greenyellow'
+  } else {        
+      //const bordaEmailTelefone = document.querySelectorAll('.form-group')[2].querySelectorAll('.form-control')[0]
+      //bordaEmailTelefone.style.borderColor = 'red'
+      alert('entrou 1')
+      event.target.value = emailValue
+      event.target.style.borderColor = 'red'
+  }
+}
 
+function validateData(event) {
+  dataValue = event.target.value.trim();  
+  if (dataValue === '') {
+    event.target.style.borderColor = 'red';
+  } else {
+      event.target.style.borderColor = 'yellowgreen'
+  }
 }
 
 
@@ -82,9 +109,9 @@ let bordaNome = document.querySelectorAll('.form-group')[0].querySelector('.form
 
 // Eventos no Nome do Formulário
 
-bordaNome.addEventListener('click', validateNome)
-bordaNome.addEventListener('change', validateNome)
-bordaNome.addEventListener('blur', validateNome)
+//bordaNome.addEventListener('click', validateNome)
+//bordaNome.addEventListener('change', validateNome)
+bordaNome.addEventListener('blur', validateNome, true)
 
 // Verifica Sobrenome
 
@@ -92,16 +119,26 @@ let bordaSobrenome = document.querySelectorAll('.form-group')[1].querySelectorAl
 
 // Eventos no Sobrenome do Formulário
 
-bordaSobrenome.addEventListener('click', validateNomeSobrenome)
-bordaSobrenome.addEventListener('change', validateNomeSobrenome)
-bordaSobrenome.addEventListener('blur', validateNome)
+//bordaSobrenome.addEventListener('click', validateNomeSobrenome)
+//bordaSobrenome.addEventListener('change', validateNomeSobrenome)
+bordaSobrenome.addEventListener('blur', validateNomeSobrenome)
 
 // Verifica Email
 
-bordaEmail = document.querySelectorAll('.form-group')[2].querySelectorAll('.form-control')[0]
+const bordaEmail = document.querySelectorAll('.form-group')[2].querySelectorAll('.form-control')[0]
 
 // Eventos no E-mail e Celular
 
-bordaEmail.addEventListener('click', validateEmailTelefoneForm)
-bordaEmail.addEventListener('change', validateEmailTelefoneForm)
-bordaEmail.addEventListener('blur', validateNome)
+//bordaEmail.addEventListener('click', validateEmailTelefoneForm)
+//bordaEmail.addEventListener('change', validateEmailTelefoneForm)
+bordaEmail.addEventListener('blur', validateEmailTelefoneForm)
+
+// Verifica Data
+
+const bordaData = document.querySelector('#datePicker');
+
+// Eventos na Data
+
+//bordaEmail.addEventListener('click', validateEmailTelefoneForm)
+//bordaEmail.addEventListener('change', validateEmailTelefoneForm)
+bordaData.addEventListener('change', validateData)
