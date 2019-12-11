@@ -74,24 +74,33 @@ function validateNomeSobrenome(event) {
 }
 
 function validateEmailTelefoneForm(event) {
-    //debugger
-    const emailValue = event.target.value.trim()    
-    const resultadoEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    const resultadoTelefone = /\d{4,5}-\d{4}/g;
-    const emailValidation = resultadoEmail.test(emailValue);
-    const telefoneValidation = resultadoTelefone.test(emailValue);       
-    if ((emailValidation || telefoneValidation) === true) {
-        //const bordaEmailTelefone = document.querySelectorAll('.form-group')[2].querySelectorAll('.form-control')[0]
-        //bordaEmailTelefone.style.borderColor = 'greenyellow'
-        event.target.value = emailValue
-        event.target.style.borderColor = 'greenyellow'
-    } else {        
-        //const bordaEmailTelefone = document.querySelectorAll('.form-group')[2].querySelectorAll('.form-control')[0]
-        //bordaEmailTelefone.style.borderColor = 'red'
-        alert('entrou 1')
-        event.target.value = emailValue
-        event.target.style.borderColor = 'red'
-    }
+  //debugger
+  const emailValue = event.target.value.trim()    
+  const resultadoEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const resultadoTelefone = /\d{4,5}-\d{4}/g;
+  const emailValidation = resultadoEmail.test(emailValue);
+  const telefoneValidation = resultadoTelefone.test(emailValue);       
+  if ((emailValidation || telefoneValidation) === true) {
+      //const bordaEmailTelefone = document.querySelectorAll('.form-group')[2].querySelectorAll('.form-control')[0]
+      //bordaEmailTelefone.style.borderColor = 'greenyellow'
+      event.target.value = emailValue
+      event.target.style.borderColor = 'greenyellow'
+  } else {        
+      //const bordaEmailTelefone = document.querySelectorAll('.form-group')[2].querySelectorAll('.form-control')[0]
+      //bordaEmailTelefone.style.borderColor = 'red'
+      alert('entrou 1')
+      event.target.value = emailValue
+      event.target.style.borderColor = 'red'
+  }
+}
+
+function validateData(event) {
+  dataValue = event.target.value.trim();  
+  if (dataValue === '') {
+    event.target.style.borderColor = 'red';
+  } else {
+      event.target.style.borderColor = 'yellowgreen'
+  }
 }
 
 
@@ -117,10 +126,20 @@ bordaSobrenome.addEventListener('blur', validateNomeSobrenome)
 
 // Verifica Email
 
-bordaEmail = document.querySelectorAll('.form-group')[2].querySelectorAll('.form-control')[0]
+const bordaEmail = document.querySelectorAll('.form-group')[2].querySelectorAll('.form-control')[0]
 
 // Eventos no E-mail e Celular
 
 //bordaEmail.addEventListener('click', validateEmailTelefoneForm)
 //bordaEmail.addEventListener('change', validateEmailTelefoneForm)
 bordaEmail.addEventListener('blur', validateEmailTelefoneForm)
+
+// Verifica Data
+
+const bordaData = document.querySelector('#datePicker');
+
+// Eventos na Data
+
+//bordaEmail.addEventListener('click', validateEmailTelefoneForm)
+//bordaEmail.addEventListener('change', validateEmailTelefoneForm)
+bordaData.addEventListener('change', validateData)
