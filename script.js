@@ -160,6 +160,7 @@ campoSenhaValue.addEventListener('blur', verificaSenhaForm)
 
 const caminhoGender = document.querySelectorAll('.form-group')
 
+
 // Verifica Botao
 
 botaoCadastrar = document.querySelector('.buttonContent')
@@ -172,20 +173,22 @@ function validaTodosCampos() {
     const EmailData = validateEmailTelefoneFormTudo(bordaEmail);
     const Data = validateDataTudo(bordaData);
     const Senha = verificaSenhaFormTudo(campoSenhaValue);
-    const Gender = verificaGenderTudo ();
-       
-    if (Nome[0] && Sobrenome[0] && EmailData[0] && Data[0] && Senha[0] && Gender[0]){
+    const Gender = verificaGenderTudo();
+
+    if (Nome[0] && Sobrenome[0] && EmailData[0] && Data[0] && Senha[0] && Gender[0]) {
         alert('Nome: ' + Nome[1] +
-              '\nSobrenome: ' + Sobrenome[1] +
-              '\nEmail ou Telefone: ' + EmailData[1] +
-              '\nData de Nascimento: ' + Data[1] + 
-              '\nSenha: ' + Senha[1] +
-              '\nSexo: ' + Gender[1]);
+            '\nSobrenome: ' + Sobrenome[1] +
+            '\nEmail ou Telefone: ' + EmailData[1] +
+            '\nData de Nascimento: ' + Data[1] +
+            '\nSenha: ' + Senha[1] +
+            '\nSexo: ' + Gender[1]);
     } else {
         alert('Cadastro não foi realizado. Corrija os campos em vermelho!!!')
     }
 }
 
+
+// Funções de Validação
 
 // Regex Nome
 
@@ -195,6 +198,7 @@ function validateNomeTudo() {
     if (resultado.test(bordaNome) == true) {
         return [true, bordaNome]
     } else {
+        document.querySelectorAll('.form-group')[0].querySelector('.form-control').style.borderColor = 'red'
         return false
     }
 }
@@ -208,6 +212,7 @@ function validateNomeSobrenomeTudo() {
     if (resultado.test(bordaSobrenome) == true) {
         return [true, bordaSobrenome]
     } else {
+        document.querySelectorAll('.form-group')[1].querySelectorAll('.form-control')[0].style.borderColor = 'red'
         return false
     }
 }
@@ -222,6 +227,7 @@ function validateEmailTelefoneFormTudo() {
     if ((emailValidation || telefoneValidation) === true) {
         return [true, bordaEmail]
     } else {
+        document.querySelectorAll('.form-group')[2].querySelectorAll('.form-control')[0].style.borderColor = 'red'
         return false
     }
 }
@@ -231,6 +237,7 @@ function validateDataTudo() {
     if (bordaData !== '') {
         return [true, bordaData]
     } else {
+        document.querySelector('#datePicker').style.borderColor = 'red'
         return false
     }
 }
@@ -240,6 +247,7 @@ function verificaSenhaFormTudo() {
     if (campoSenhaValue !== "") {
         return [true, campoSenhaValue]
     } else {
+        document.querySelector('.novaSenha').style.borderColor = 'red'
         return false
     }
 }
@@ -248,15 +256,21 @@ const verificaGenderTudo = () => {
     const caminhoGenderTudo = document.querySelectorAll('.form-check-input')
     let i = 0;
     let value = '';
-     caminhoGenderTudo.forEach(element => {
-         if (element.checked == true) {
-             i += 1;
-             value = element.value
-         }         
-     })
-     if (i == 1){
-         return [true, value];
-     } else {
-         return false;
-     }
- };
+    caminhoGenderTudo.forEach(element => {
+        if (element.checked == true) {
+            i += 1;
+            value = element.value
+        }
+    })
+    if (i == 1) {
+            document.querySelectorAll('.form-check-inline')[0].style.border = 'none'
+            document.querySelectorAll('.form-check-inline')[1].style.border = 'none'
+            document.querySelectorAll('.form-check-inline')[2].style.border = 'none'
+        return [true, value];
+    } else {
+        document.querySelectorAll('.form-check-inline')[0].style.borderColor = 'red'
+        document.querySelectorAll('.form-check-inline')[1].style.borderColor = 'red'
+        document.querySelectorAll('.form-check-inline')[2].style.borderColor = 'red'
+        return false;
+    }
+};
