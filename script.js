@@ -167,10 +167,22 @@ botaoCadastrar = document.querySelector('.buttonContent')
 botaoCadastrar.addEventListener('click', validaTodosCampos)
 
 function validaTodosCampos() {
-    if (validateNomeTudo(bordaNome) === true && validateNomeSobrenomeTudo(bordaSobrenome) === true && validateEmailTelefoneFormTudo(bordaEmail) === true && validateDataTudo(bordaData) === true && verificaSenhaFormTudo(campoSenhaValue) === true){
-        alert('Cadastro Realizado Com Sucesso!!!')
+    const Nome = validateNomeTudo(bordaNome);
+    const Sobrenome = validateNomeSobrenomeTudo(bordaSobrenome);
+    const EmailData = validateEmailTelefoneFormTudo(bordaEmail);
+    const Data = validateDataTudo(bordaData);
+    const Senha = verificaSenhaFormTudo(campoSenhaValue);
+    const Gender = verificaGenderTudo ();
+       
+    if (Nome[0] && Sobrenome[0] && EmailData[0] && Data[0] && Senha[0] && Gender[0]){
+        alert('Nome: ' + Nome[1] +
+              '\nSobrenome: ' + Sobrenome[1] +
+              '\nEmail ou Telefone: ' + EmailData[1] +
+              '\nData de Nascimento: ' + Data[1] + 
+              '\nSenha: ' + Senha[1] +
+              '\nSexo: ' + Gender[1]);
     } else {
-        alert('Deu ruim')
+        alert('Cadastro não foi realizado. Corrija os campos em vermelho!!!')
     }
 }
 
@@ -181,7 +193,7 @@ function validateNomeTudo() {
     let bordaNome = document.querySelectorAll('.form-group')[0].querySelector('.form-control').value
     const resultado = /^[a-zA-ZéúíóáÉÚÍÓÁèùìòàçÇÈÙÌÒÀõãñÕÃÑêûîôâÊÛÎÔÂëÿüïöäËYÜÏÖÄ\-\ \s]+$/;
     if (resultado.test(bordaNome) == true) {
-        return true
+        return [true, bordaNome]
     } else {
         return false
     }
@@ -194,7 +206,7 @@ function validateNomeSobrenomeTudo() {
     let bordaSobrenome = document.querySelectorAll('.form-group')[1].querySelectorAll('.form-control')[0].value
     const resultado = /^[a-zA-ZéúíóáÉÚÍÓÁèùìòàçÇÈÙÌÒÀõãñÕÃÑêûîôâÊÛÎÔÂëÿüïöäËYÜÏÖÄ\-\ \s]+$/;
     if (resultado.test(bordaSobrenome) == true) {
-        return true
+        return [true, bordaSobrenome]
     } else {
         return false
     }
@@ -204,11 +216,11 @@ function validateEmailTelefoneFormTudo() {
     //debugger
     const bordaEmail = document.querySelectorAll('.form-group')[2].querySelectorAll('.form-control')[0].value
     const resultadoEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    const resultadoTelefone = /\d{4,5}-\d{4}/g;
+    const resultadoTelefone = /\d{4,5}-\d{4}/;
     const emailValidation = resultadoEmail.test(bordaEmail);
     const telefoneValidation = resultadoTelefone.test(bordaEmail);
     if ((emailValidation || telefoneValidation) === true) {
-        return true
+        return [true, bordaEmail]
     } else {
         return false
     }
@@ -216,8 +228,8 @@ function validateEmailTelefoneFormTudo() {
 
 function validateDataTudo() {
     const bordaData = document.querySelector('#datePicker').value;
-    if (dataValue !== '') {
-        return true
+    if (bordaData !== '') {
+        return [true, bordaData]
     } else {
         return false
     }
@@ -226,18 +238,25 @@ function validateDataTudo() {
 function verificaSenhaFormTudo() {
     const campoSenhaValue = document.querySelector('.novaSenha').value
     if (campoSenhaValue !== "") {
-        return true
+        return [true, campoSenhaValue]
     } else {
         return false
     }
 }
 
-// const verificaGenderTudo = () => {
-//     caminhoGender.forEach(element => {
-//         if (element.checked == true) {
-//             return true
-//         } else {
-//            return false
-//         }
-//     })
-// };
+const verificaGenderTudo = () => {
+    const caminhoGenderTudo = document.querySelectorAll('.form-check-input')
+    let i = 0;
+    let value = '';
+     caminhoGenderTudo.forEach(element => {
+         if (element.checked == true) {
+             i += 1;
+             value = element.value
+         }         
+     })
+     if (i == 1){
+         return [true, value];
+     } else {
+         return false;
+     }
+ };
